@@ -30,48 +30,264 @@
     <link rel="stylesheet" href="assets/css/gijgo.css" />
     <link rel="stylesheet" href="assets/css/animate.min.css" />
     <link rel="stylesheet" href="assets/css/animated-headline.css" />
-      <div class="footer-area black-bg ston-footer">
-        <div class="container">
-          <div class="footer-top footer-padding">
-            <div class="row">
-              <div class="col-xl-12">
-                <div class="ston-footer-panel">
-                  <div class="ston-footer-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay=".1s" style="background-image: url('assets/img/coaches/Heasdhots%20and%20branding%20on%20location.jpeg');">
-                    <div class="ston-footer-card-inner">
-                      <h4 class="ston-footer-title">Find Us</h4>
-                      <p class="ston-footer-copy">East Legon UG Campus</p>
-                      <iframe class="ston-footer-map" title="Ston Fitness location map" src="https://www.google.com/maps?q=East%20Legon%20UG%20Campus&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                  </div>
-                  <div class="ston-footer-card wow fadeInUp" data-wow-duration="0.8s" data-wow-delay=".25s" style="background-image: url('assets/img/coaches/Intense%20Group%20Workout_%20High-Energy%20Fitness%20Motivation.jpeg');">
-                    <div class="ston-footer-card-inner">
-                      <h4 class="ston-footer-title">Sign Up for Our Classes</h4>
-                      <p class="ston-footer-copy">Be invited to the nearest Cali center and get free physical advice to learn more about the program.</p>
-                      <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                        <div class="ston-footer-form">
-                          <div class="ston-footer-field"><input type="text" name="first_name" placeholder="First Name" required /></div>
-                          <div class="ston-footer-field"><input type="text" name="last_name" placeholder="Last Name" required /></div>
-                          <div class="ston-footer-field"><input type="email" name="email" placeholder="Your Email" required /></div>
-                          <div class="ston-footer-field"><input type="tel" name="number" placeholder="Phone Number" required /></div>
-                          <div class="ston-footer-field ston-footer-full"><textarea name="message" placeholder="Message" required></textarea></div>
-                        </div>
-                        <div style="margin-top: 18px;"><button type="submit" class="ston-footer-submit">Get Started</button></div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row ston-footer-bottom-row">
-              <div class="col-xl-12">
-                <div class="footer-copy-right text-center">
-                  <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made by <a href="https://github.com/EBNyame" target="_blank">Exodus</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="assets/css/slick.css" />
+    <link rel="stylesheet" href="assets/css/nice-select.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* ===== FITLIFE HERO SECTION STYLES ===== */
+      .fitlife-hero-wrapper {
+        font-family: "Inter", sans-serif;
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background: #111820;
+      }
+
+      /* Orange panel — right 30% */
+      .fitlife-hero-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30%;
+        height: 100%;
+        background: #e8410a;
+        z-index: 0;
+      }
+
+      /* Dark panel — left 70% (full bg is already set, this pins the dark explicitly) */
+      .fitlife-hero-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        background: #111820;
+        z-index: 0;
+      }
+
+      /* ---- Geometric shapes overlay on dark side ---- */
+      .fitlife-hero-dots {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      /* Individual shapes are rendered via SVG inside .fitlife-hero-dots in HTML */
+
+      /* Orange spray / glow behind trainer */
+      .fitlife-hero-glow {
+        position: absolute;
+        /* sits at the split point, centered vertically */
+        right: 28%;
+        top: 50%;
+        transform: translate(50%, -50%);
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(232, 65, 10, 0.55) 0%,
+          rgba(232, 65, 10, 0.25) 35%,
+          rgba(232, 65, 10, 0) 70%
+        );
+        border-radius: 50%;
+        z-index: 2;
+        pointer-events: none;
+        filter: blur(18px);
+      }
+
+      /* Orange spray near the logo / top-left corner of dark panel
+           Hidden per request to remove the orange sprayed color at the logo */
+      .fitlife-logo-spray {
+        display: none;
+      }
+
+      /* ---- NAVBAR ---- */
+      .fitlife-nav {
+        position: relative;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 60px;
+      }
+      .fitlife-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .fitlife-logo-icon {
+        width: 32px;
+        height: 32px;
+        background: #e8410a;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 900;
+        color: #fff;
+        line-height: 1;
+      }
+      .fitlife-logo-text {
+        font-size: 26px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.5px;
+      }
+      .fitlife-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .fitlife-nav-links a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.25s;
+      }
+      .fitlife-nav-links a:hover,
+      .fitlife-nav-links a.active {
+        color: #e8410a;
+      }
+      .fitlife-nav-btn {
+        background: #fff;
+        color: #111820 !important;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 28px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition:
+          background 0.25s,
+          color 0.25s;
+        white-space: nowrap;
+      }
+      .fitlife-nav-btn:hover {
+        background: #e8410a;
+        color: #fff !important;
+      }
+
+      /* ---- HERO BODY ---- */
+      .fitlife-hero-body {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        padding: 40px 60px 60px;
+        min-height: calc(100vh - 80px);
+      }
+      .fitlife-hero-left {
+        flex: 0 0 42%;
+        max-width: 42%;
+        padding-right: 40px;
+      }
+      /* Right panel is wider so the image can straddle the split */
+      .fitlife-hero-right {
+        flex: 0 0 58%;
+        max-width: 58%;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        min-height: 560px;
+      }
+
+      /* Badge */
+      .fitlife-badge {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 28px;
+        border-radius: 4px;
+        overflow: hidden;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .fitlife-badge-red {
+        background: #e8410a;
+        color: #fff;
+        padding: 7px 14px;
+      }
+      .fitlife-badge-dark {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        padding: 7px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      /* Heading */
+      .fitlife-hero-h1 {
+        font-size: clamp(40px, 5vw, 64px);
+        font-weight: 900;
+        color: #fff;
+        line-height: 1.1;
+        margin: 0 0 20px;
+        letter-spacing: -1px;
+      }
+      .fitlife-hero-desc {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 36px;
+        max-width: 440px;
+      }
+      .fitlife-get-started {
+        display: inline-block;
+        background: #e8410a;
+        color: #fff !important;
+        text-decoration: none;
+        padding: 16px 40px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: 4px;
+        transition:
+          background 0.25s,
+          transform 0.2s;
+      }
+      .fitlife-get-started:hover {
+        background: #c73508;
+        transform: translateY(-2px);
+      }
+
+      /* Hero image area */
+      .fitlife-circle-wrap {
+        position: absolute;
+        top: 50%;
+        /* shift left so circles sit where image center is */
+        left: 38%;
+        transform: translate(-50%, -50%);
+        width: 480px;
+        height: 480px;
+      }
+      .fitlife-circle-one {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 100%;
         animation: fitRotateSlow 18s linear infinite;
       }
@@ -1676,138 +1892,108 @@
     </main>
     <footer>
       <!--? Footer Start-->
-      <div class="footer-area black-bg">
+      <div class="footer-area black-bg ston-footer">
         <div class="container">
           <div class="footer-top footer-padding">
             <div class="row">
               <div class="col-xl-12">
-                <div class="footer-panel">
+                <div class="ston-footer-panel">
                   <div
-                    class="footer-map-box wow fadeInUp"
+                    class="ston-footer-card wow fadeInUp"
                     data-wow-duration="0.8s"
                     data-wow-delay=".1s"
+                    style="
+                      background-image: url(&quot;assets/img/coaches/Heasdhots%20and%20branding%20on%20location.jpeg&quot;);
+                    "
                   >
-                    <h4>Find Us</h4>
-                    <p>Mini map preview for quick location reference.</p>
-                    <iframe
-                      class="footer-mini-map"
-                      title="Ston Fitness location map"
-                      src="https://www.google.com/maps?q=East%20Legon%20UG%20Campus&output=embed"
-                      loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                    <div class="ston-footer-card-inner">
+                      <h4 class="ston-footer-title">Find Us</h4>
+                      <p class="ston-footer-copy">East Legon UG Campus</p>
+                      <iframe
+                        class="ston-footer-map"
+                        title="Ston Fitness location map"
+                        src="https://www.google.com/maps?q=East%20Legon%20UG%20Campus&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
                   </div>
                   <div
-                    class="footer-form-box wow fadeInUp"
+                    class="ston-footer-card wow fadeInUp"
                     data-wow-duration="0.8s"
                     data-wow-delay=".25s"
+                    style="
+                      background-image: url(&quot;assets/img/coaches/Intense%20Group%20Workout_%20High-Energy%20Fitness%20Motivation.jpeg&quot;);
+                    "
                   >
-                    <h4>Sign Up for Our Classes</h4>
-                    <p>
-                      Be invited to the nearest Cali center and get free
-                      physical advice to learn more about the program.
-                    </p>
-                    <form
-                      class="form-contact contact_form"
-                      action="contact_process.php"
-                      method="post"
-                      id="contactForm"
-                      novalidate="novalidate"
-                    >
-                      <div class="footer-form-grid">
-                        <div class="footer-form-field">
-                          <input
-                            type="text"
-                            name="first_name"
-                            placeholder="First Name"
-                            required
-                          />
+                    <div class="ston-footer-card-inner">
+                      <h4 class="ston-footer-title">Sign Up for Our Classes</h4>
+                      <p class="ston-footer-copy">
+                        Be invited to the nearest Cali center and get free
+                        physical advice to learn more about the program.
+                      </p>
+                      <form
+                        class="form-contact contact_form"
+                        action="contact_process.php"
+                        method="post"
+                        id="contactForm"
+                        novalidate="novalidate"
+                      >
+                        <div class="ston-footer-form">
+                          <div class="ston-footer-field">
+                            <input
+                              type="text"
+                              name="first_name"
+                              placeholder="First Name"
+                              required
+                            />
+                          </div>
+                          <div class="ston-footer-field">
+                            <input
+                              type="text"
+                              name="last_name"
+                              placeholder="Last Name"
+                              required
+                            />
+                          </div>
+                          <div class="ston-footer-field">
+                            <input
+                              type="email"
+                              name="email"
+                              placeholder="Your Email"
+                              required
+                            />
+                          </div>
+                          <div class="ston-footer-field">
+                            <input
+                              type="tel"
+                              name="number"
+                              placeholder="Phone Number"
+                              required
+                            />
+                          </div>
+                          <div class="ston-footer-field ston-footer-full">
+                            <textarea
+                              name="message"
+                              placeholder="Message"
+                              required
+                            ></textarea>
+                          </div>
                         </div>
-                        <div class="footer-form-field">
-                          <input
-                            type="text"
-                            name="last_name"
-                            placeholder="Last Name"
-                            required
-                          />
+                        <div style="margin-top: 18px">
+                          <button type="submit" class="ston-footer-submit">
+                            Get Started
+                          </button>
                         </div>
-                        <div class="footer-form-field">
-                          <input
-                            type="email"
-                            name="email"
-                            placeholder="Your Email"
-                            required
-                          />
-                        </div>
-                        <div class="footer-form-field">
-                          <input
-                            type="tel"
-                            name="number"
-                            placeholder="Phone Number"
-                            required
-                          />
-                        </div>
-                        <div class="footer-form-field footer-form-field--full">
-                          <textarea
-                            name="message"
-                            placeholder="Message"
-                            required
-                          ></textarea>
-                        </div>
-                      </div>
-                      <div style="margin-top: 18px">
-                        <button type="submit" class="footer-submit">
-                          Get Started
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row footer-menu-wrap">
-              <div class="col-xl-12">
-                <div
-                  class="header-area main-header2 wow fadeInUp"
-                  data-wow-duration="0.9s"
-                  data-wow-delay=".4s"
-                >
-                  <div class="main-header main-header2">
-                    <div class="menu-wrapper menu-wrapper2">
-                      <div class="main-menu main-menu2 text-center">
-                        <nav>
-                          <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="courses.html">Courses</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                          </ul>
-                        </nav>
-                      </div>
+                      </form>
                     </div>
                   </div>
                 </div>
-                <div
-                  class="footer-social mt-30 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay=".55s"
-                >
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="https://bit.ly/sai4ull"
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                  <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                </div>
               </div>
             </div>
-          </div>
-          <!-- Footer Bottom -->
-          <div class="footer-bottom">
-            <div class="row d-flex align-items-center">
-              <div class="col-lg-12">
-                <div class="footer-copy-right text-center">
+            <div class="row ston-footer-bottom-row">
+              <div class="col-xl-12 text-center">
+                <div class="footer-copy-right ston-footer-bottom">
                   <p>
                     Copyright &copy;
                     <script>
